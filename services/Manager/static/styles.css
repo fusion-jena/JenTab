@@ -1,0 +1,145 @@
+fieldset {
+  display: inline-block;
+  vertical-align: top;
+}
+fieldset + fieldset {
+  margin-left: 1em;
+}
+
+label {
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 1em;
+}
+
+.tabtotal {
+  background-color: burlywood;
+}
+.tabresult {
+  background-color: forestgreen;
+}
+.taberror {
+  background-color: indianred;
+}
+
+.icon {
+  width:  0.7em;
+  height: 0.7em;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+.progress {
+  display: inline-block;
+  height: 1em;
+  width:  20em;
+  text-align: left;
+}
+
+.progress > div {
+  display: inline-block;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.button {
+  width: 1em;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:not([href]) {
+  opacity: 0.5;
+}
+
+.note {
+  font-size: 80%;
+  font-style: italic;
+}
+
+.finishedFlag.finished .finished,
+.finishedFlag:not(.finished) .unfinished {
+  display: inherit;
+}
+.finishedFlag:not(.finished) .finished,
+.finishedFlag.finished .unfinished {
+  display: none;
+}
+
+td, th {
+  text-align: left;
+  padding-left: 1em;
+}
+
+.formattedTable table {
+  border-collapse: collapse;
+  vertical-align: top;
+}
+
+.formattedTable tbody td,
+.formattedTable tbody th {
+  text-align: center;
+}
+
+.formattedTable tbody th {
+  padding: 0.5em 1em;
+}
+
+.formattedTable tbody tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+.formattedTable thead th {
+  font-style: italic;
+}
+
+#missingMappings table {
+  display: inline-block;
+}
+
+table + table {
+  margin-left: 1em;
+}
+
+#analysis input {
+  display: none;
+}
+#analysis input + div {
+  display: none;
+}
+#analysis input:checked + div {
+  display: block;
+}
+#analysis th {
+  cursor: pointer;
+}
+
+#analysis .cont {
+  display: flex;
+  min-width: 70em;
+}
+#analysis .cont > div {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  text-align: center;
+}
+#analysis .cont > div:first-child {
+  margin-right: 2em;
+}
+#analysis .cont > div table {
+  text-align: left;
+}
+#analysisDetail .header {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1em;
+}

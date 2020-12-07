@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8" />
+    <title>JenTab: Processing Status</title>
+    <link rel="stylesheet" hreF="./static/styles.css" />
+  </head>
+  <body>
+<!--
+    <fieldset>
+      <legend>Version</legend>
+      <ul>
+        <li>Currently running on commit <span data-path="version.sha"></span></li>
+        <li>Commit message was
+          <pre data-path="version.msg"></pre>
+          by <span data-path="version.author"></span>
+        </li>
+      </ul>
+    </fieldset>
+-->
+
+
+    <div class="row">
+      <fieldset>
+        <legend>Currently Processing</legend>
+        <table>
+          <tr>
+            <th><span class="icon tabtotal"></span> Tables (total):</th>
+            <td>
+              <a href="./downloadTables"><img src="./static/gfx/download.svg" class="button" /></a>
+              <span data-path="tables.total"></span>
+            </td>
+          </tr>
+          <tr class="results">
+            <th><span class="icon tabresult"></span> Results returned:</th>
+            <td>
+              <a href="./downloadResults"><img src="./static/gfx/download.svg" class="button" /></a>
+              <span data-path="tables.result"></span>
+            </td>
+          </tr>
+          <tr class="errors">
+            <th><span class="icon taberror"></span> Errors returned:</th>
+            <td>
+              <a href="./downloadErrors"><img src="./static/gfx/download.svg" class="button" /></a>
+              <span data-path="tables.error"></span>
+            </td>
+          </tr>
+          <tr class="errors">
+            <th><span class="icon tabunfinished" style="visibility: hidden;"></span> Unfinished:</th>
+            <td>
+              <a href=""><img src="./static/gfx/download.svg" class="button" style="visibility: hidden;" /></a>
+              <span data-path="tables.unfinished"></span>
+            </td>
+          </tr>
+          <tr>
+            <th>Finished:</th>
+            <th class="finishedFlag">
+              <span class="finished">Yes</span>
+              <span class="unfinished">No</span>
+            </th>
+          </tr>
+        </table>
+        <div class="progress tabtotal"><div class="tabresult"></div><div class="taberror"></div></div>
+      </fieldset>
+      <fieldset>
+        <legend>Average time until &hellip;</legend>
+        <table>
+          <tr>
+            <th>Results:</th>
+            <td data-path="times.result"></td>
+          </tr>
+          <tr>
+            <th>Errors:</th>
+            <td data-path="times.error"></td>
+          </tr>
+          <tr>
+            <th title="expected time remaining">Finished:</th>
+            <td data-path="times.remaining"></td>
+          </tr>
+        </table>
+      </fieldset>
+      <fieldset>
+        <legend>Clients connect within &hellip;</legend>
+        <table>
+          <tr>
+            <th>Last minute:</th>
+            <td data-path="clients.minute"></td>
+          </tr>
+          <tr>
+            <th>Last 15 minutes:</th>
+            <td data-path="clients.quarter"></td>
+          </tr>
+          <tr>
+            <th>Last hour:</th>
+            <td data-path="clients.hour"></td>
+          </tr>
+          <tr>
+            <th>Last day:</th>
+            <td data-path="clients.day"></td>
+          </tr>
+        </table>
+      </fieldset>
+      <fieldset>
+        <legend>Mappings</legend>
+        <table>
+          <tr>
+            <th>CEA:</th>
+            <td><span data-path="mappings.cea.mapped"></span> / <span data-path="mappings.cea.total"></span></td>
+            <td>(<span data-path="mappings.cea.fraction"></span>%)</td>
+          </tr>
+          <tr>
+            <th>CTA:</th>
+            <td><span data-path="mappings.cta.mapped"></span> / <span data-path="mappings.cta.total"></span></td>
+            <td>(<span data-path="mappings.cta.fraction"></span>%)</td>
+          </tr>
+          <tr>
+            <th>CPA:</th>
+            <td><span data-path="mappings.cpa.mapped"></span> / <span data-path="mappings.cpa.total"></span></td>
+            <td>(<span data-path="mappings.cpa.fraction"></span>%)</td>
+          </tr>
+        </table>
+      </fieldset>
+    </div>
+
+    <div class="row">
+      <fieldset>
+        <legend>Submission Data</legend>
+        <p class="note">
+          This does not check, whether data for all tables has been received. It is only a snapshot of the current state of submitted solutions.
+        <table>
+          <tr>
+            <th>CEA:</th>
+            <td>
+              <a href="./downloadSubmission/cea" style="margin-left: 1em;">
+                <img src="./static/gfx/download.svg" class="button" />
+                solved
+              </a>
+            </td>
+            <td>
+              <a href="./downloadSubmission/cea/missing" style="margin-left: 1em;">
+                <img src="./static/gfx/download.svg" class="button" />
+                missing mappings
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <th>CPA:</th>
+            <td>
+              <a href="./downloadSubmission/cpa" style="margin-left: 1em;">
+                <img src="./static/gfx/download.svg" class="button" />
+                solved
+              </a>
+            </td>
+            <td>
+              <a href="./downloadSubmission/cpa/missing" style="margin-left: 1em;">
+                <img src="./static/gfx/download.svg" class="button" />
+                missing mappings
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <th>CTA:</th>
+            <td>
+              <a href="./downloadSubmission/cta" style="margin-left: 1em;">
+                <img src="./static/gfx/download.svg" class="button" />
+                solved
+              </a>
+            </td>
+            <td>
+              <a href="./downloadSubmission/cta/missing" style="margin-left: 1em;">
+                <img src="./static/gfx/download.svg" class="button" />
+                missing mappings
+              </a>
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+    </div>
+
+    <div class="row">
+      <fieldset id="missingMappings" class="formattedTable">
+        <legend>Missing Mappings</legend>
+        <p class="note">
+          This is not concerned whether the obtained mappings are correct, but only lists the tables where mappings are missing.
+          <br>
+          Lists at most 10 tables per category.
+          <br>
+          Mind the dependencies: If fewer CEA mappings are found, also the CTA and CPA mappings will deteriorate.
+        </p>
+        <button type="button">Fetch</button>
+        <div class="row"></div>
+      </fieldset>
+    </div>
+
+    <div class="row">
+      <fieldset id="eval" class="formattedTable" style="display: none;">
+        <legend>Evaluation</legend>
+        <p class="note">
+          The data here refers to the entities that were submitted as solutions.
+        </p>
+        <button type="button">Fetch</button>
+        <table>
+          <tr>
+            <td></td>
+            <th>CEA</th>
+            <th>CPA</th>
+            <th>CTA</th>
+          </tr>
+          <tr>
+            <th title="Number of solved tables in Manager we do not have a ground truth for.">No Solutions (#tables)</th>
+            <td data-path="cea.missingSolutions"></td>
+            <td data-path="cpa.missingSolutions"></td>
+            <td data-path="cta.missingSolutions"></td>
+          </tr>
+          <tr>
+            <th title="Tables with a ground truth we have no solution for.">No Submission (#tables)</th>
+            <td data-path="cea.missingSubmissions"></td>
+            <td data-path="cpa.missingSubmissions"></td>
+            <td data-path="cta.missingSubmissions"></td>
+          </tr>
+          <tr>
+            <th title="Number of mappings in ground truth that were not requested.">Superfluous entries in GT (#mappings)</th>
+            <td data-path="cea.superfluousMappings"></td>
+            <td data-path="cpa.superfluousMappings"></td>
+            <td data-path="cta.superfluousMappings"></td>
+          </tr>
+          <tr>
+            <th title="Number of mappings in ground truth we have no solution for.">Missing mappings (#mappings)</th>
+            <td data-path="cea.missingMappings"></td>
+            <td data-path="cpa.missingMappings"></td>
+            <td data-path="cta.missingMappings"></td>
+          </tr>
+          <tr>
+            <th title="Number of mappings we have a value that's incorrect.">Incorrect mappings (#mappings)</th>
+            <td data-path="cea.incorrectMappings"></td>
+            <td data-path="cpa.incorrectMappings"></td>
+            <td data-path="cta.incorrectMappings"></td>
+          </tr>
+          <tr>
+            <th title="Number of mappings we have a value that's correct.">Correct mappings (#mappings)</th>
+            <td data-path="cea.correctMappings"></td>
+            <td data-path="cpa.correctMappings"></td>
+            <td data-path="cta.correctMappings"></td>
+          </tr>
+        </table>
+      </fieldset>
+    </div>
+
+    <div class="row">
+      <fieldset id="analysis" class="formattedTable" style="display: none;">
+        <legend>Candidate Filter Analysis</legend>
+        <p class="note">
+          The data here refers to the set of all candidates after the specific step.
+        </p>
+        <button type="button">Fetch</button>
+        <br>
+        Task to analyse:
+        <label for="toggleAnalysisCEA">CEA</label>
+        &middot;
+        <label for="toggleAnalysisCPA">CPA</label>
+        &middot;
+        <label for="toggleAnalysisCTA">CTA</label>
+        <br>
+        <div class="cont">
+          <div id="analysisOverview">
+
+            <input type="radio" id="toggleAnalysisCEA" name="toggleAnalyis" checked autocomplete="off"/>
+            <div id="analysisCEA"></div>
+    
+            <input type="radio" id="toggleAnalysisCPA" name="toggleAnalyis" autocomplete="off"/>
+            <div id="analysisCPA"></div>
+    
+            <input type="radio" id="toggleAnalysisCTA" name="toggleAnalyis" autocomplete="off"/>
+            <div id="analysisCTA"></div>
+
+          </div>
+          <div id="analysisDetail">
+            <div class="header"></div>
+            <div class="tab"></div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="row">
+          <fieldset id="audit" class="formattedTable">
+            <legend>Audit Analysis</legend>
+            <p class="note">
+              The data here shows the effectiveness for each method of pipeline in each step.
+            </p>
+            <button type="button">Fetch</button>
+            <br>
+
+             <table id="audit_table">
+                <tr>
+                  <td></td>
+                  <th>CEA</th>
+                  <th>CTA</th>
+                  <th>CPA</th>
+                </tr>
+                <tr>
+                  <td>Creation</td>
+                  <td style="text-align: left;" id="c_cea"></td>
+                  <td style="text-align: left;" id="c_cta"></td>
+                  <td style="text-align: left;" id="c_cpa"></td>
+                </tr>
+               <tr>
+                  <td>Selection</td>
+                  <td style="text-align: left;" id="s_cea"></td>
+                  <td style="text-align: left;" id="s_cta"></td>
+                  <td style="text-align: left;" id="s_cpa"></td>
+               </tr>
+              </table>
+
+
+    </fieldset>
+  </div>
+
+    <script src="./static/script.js"></script>
+  </body>
+</html>
