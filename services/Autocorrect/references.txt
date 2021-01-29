@@ -1,0 +1,16 @@
+# Normal libs
+
+# https://www.tutorialspoint.com/python_text_processing/python_spelling_check.htm
+    1. autocorrect
+    2. textblob
+    3. pyspellchecker
+* The 3 different libraries are not properly working
+- Rashmon -> Fashion while expected as Rashomon
+
+# Word2Vec as spell Checker
+# Naive solutions to find most similar word is not working fot OOV words
+
+# Instead we use Word2Vec as a dictionary source and calculate probability as edit distance
+https://www.kaggle.com/cpmpml/spell-checker-using-word2vec
+
+# TODO: Replace the Google Word2Vec by a Wiki Word2Vec

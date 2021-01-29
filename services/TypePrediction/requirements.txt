@@ -1,0 +1,10 @@
+waitress==1.4.4
+flask
+python-dateutil
+phonenumbers
+spacy
+gunicorn==20.0.4
+
+datefinder
+date_detector
+#Run this manually if windows: python -m spacy download en

@@ -1,0 +1,10 @@
+/venv/
+.idea
+.directory
+__pycache__
+/*/__pycache__/
+/results/
+/assets/
+*.log
+*.zip
+*.csv

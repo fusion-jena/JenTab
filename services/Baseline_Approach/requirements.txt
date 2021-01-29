@@ -1,0 +1,9 @@
+werkzeug
+waitress
+flask
+requests
+requests_futures
+stringdist
+pandas
+tabulate
+edlib
