@@ -1,0 +1,251 @@
+version: "3.7"
+services:
+
+  # runner:
+  #   build: ./Runner
+  #   #restart: always
+  #   networks:
+  #     tabmatching-net:
+  #       aliases:
+  #        - runner.svc
+  #   environment:
+  #     - DOCKERIZED=True
+  #   depends_on:
+  #     - baseline_appraoch
+  #     - clean_cells
+  #     - dbpedia_endpoint
+  #     - dbpedia_lookup
+  #     - kg_mapper
+  #     - language_prediction
+  #     - load_table
+  #     - type_prediction
+  #     - wikidata_endpoint
+  #     - wikidata_lookup
+
+  baseline_approach:
+    build: ./Baseline_Approach
+    restart: always
+    volumes:
+      - ../assets/data:/code/assets
+      - ../assets/data/cache/Baseline_Approach:/code/cache
+    networks:
+      tabmatching-net:
+        aliases:
+         - baseline.svc
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    expose:
+      - 5000
+    ports:
+      - 5000:5000
+    environment:
+      - DOCKERIZED=True
+
+  clean_cells:
+    build: ./CleanCells
+    restart: always
+    volumes:
+      - ../assets/data:/code/assets
+    networks:
+      tabmatching-net:
+        aliases:
+         - cleancells.svc
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    expose:
+      - 5001
+    ports: 
+      - 5001:5001
+    environment:
+      - DISABLE_MODELBASED_CORRECTIONS=True
+      - DOCKERIZED=True
+
+  # dbpedia_endpoint:
+  #   build: ./DBpedia_Endpoint_API
+  #   restart: always
+  #   networks:
+  #     tabmatching-net:
+  #       aliases:
+  #        - endpoint.dbpedia.svc
+  #   expose:
+  #     - 5002
+  #   ports:
+  #     - 5002:5002
+  #   environment:
+  #     - DOCKERIZED=True
+
+  # dbpedia_lookup:
+  #   build: ./DBpedia_Lookup_API
+  #   restart: always
+  #   networks:
+  #     tabmatching-net:
+  #       aliases:
+  #         - lookup.dbpedia.svc
+  #   expose:
+  #     - 5003
+  #   ports:
+  #     - 5003:5003
+  #   environment:
+  #     - DOCKERIZED=True
+
+  language_prediction:
+    build: ./LanguagePrediction
+    restart: always
+    networks:
+      tabmatching-net:
+        aliases:
+          - languageprediction.svc
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    expose:
+      - 5004
+    ports:
+      - 5004:5004
+    environment:
+      - DOCKERIZED=True
+
+  type_prediction:
+    build: ./TypePrediction
+    restart: always
+    volumes:
+      - ../assets/data:/code/assets
+    networks:
+      tabmatching-net:
+        aliases:
+          - typeprediction.svc
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    expose:
+      - 5006
+    ports:
+      - 5006:5006
+    environment:
+      - DOCKERIZED=True
+
+  wikidata_endpoint:
+    build: ./Wikidata_Endpoint_API
+    restart: always
+    volumes:
+      - ../assets/Wikidata_Endpoint:/code/assets
+      - ../assets/data/cache/Wikidata_Endpoint:/code/cache
+    networks:
+      tabmatching-net:
+        aliases:
+          - endpoint.wikidata.svc
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    expose:
+      - 5007
+    ports:
+      - 5007:5007
+    environment:
+      - DOCKERIZED=True
+      - MAX_PARALLEL_REQUESTS=5
+      - DEFAULT_DELAY=10
+      - MAX_RETRIES=5
+
+  wikidata_lookup:
+    build: ./Wikidata_Lookup_API
+    restart: always
+    volumes:
+      - ../assets/data/cache/Wikidata_Lookup:/code/cache
+    networks:
+      tabmatching-net:
+        aliases:
+          - lookup.wikidata.svc
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    expose:
+      - 5008
+    ports:
+      - 5008:5008
+    environment:
+      - DOCKERIZED=True
+      - MAX_PARALLEL_REQUESTS=5
+      - DEFAULT_DELAY=10
+      - MAX_RETRIES=5
+
+  generic_lookup:
+    build: ./Generic_Lookup
+    restart: always
+    volumes:
+      - ../assets/data/cache/Generic_Lookup:/code/cache
+    networks:
+      tabmatching-net:
+        aliases:
+          - lookup.generic.svc
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    expose:
+      - 5010
+    ports:
+      - 5010:5010
+    environment:
+      - DOCKERIZED=True
+      
+  auditor:
+    build: ./Auditor
+    restart: always
+    volumes:
+      - ../assets/data/cache/Auditor:/code/cache
+    networks:
+      tabmatching-net:
+        aliases:
+          - auditor.svc
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    expose:
+      - 5011
+    ports:
+      - 5011:5011
+    environment:
+      - DOCKERIZED=True
+    
+  autocorrect:
+    build: ./Autocorrect
+    restart: always
+    volumes:
+      - ../assets/data:/code/assets
+    networks:
+      tabmatching-net:
+        aliases:
+         - autocorrect.svc
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    expose:
+      - 5005
+    ports: 
+      - 5005:5005
+    environment:
+      - DISABLE_MODELBASED_CORRECTIONS=False
+      - DOCKERIZED=True
+
+networks:
+  tabmatching-net:
