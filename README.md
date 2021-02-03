@@ -36,7 +36,7 @@ The fastest way to get JenTab up and running is via docker setup, with the follo
 * Note1: for basic understanding of docker commands, please visit the official documentation of [docker](https://docs.docker.com/get-started/).
 * Note2: We also support native execution, but, in this case, you will setup each service on its own. So, we refer to:
     * each folder of each service under [services](/services).
-    * [services.md](/services.md) summarizes the currently used services and their ports. 
+    * [services.md](services/services.md) summarizes the currently used services and their ports. 
 
 ## Results
 
