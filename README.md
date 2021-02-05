@@ -38,6 +38,12 @@ The fastest way to get JenTab up and running is via docker setup, with the follo
     * each folder of each service under [services](/services).
     * [services.md](services/Services.md) summarizes the currently used services and their ports. 
 
+## Assets
+[assets](/assets) folder conatins all the required materials by services. For example:
+* The pre-trained word2vec model for AutoCorrect services.
+* How the data should be organized, in terms of tables and targets.
+* ... more details in the [ReadMe.md](/assets/README.md)
+	
 ## Results
 
 * [Submitted Solution Files](https://github.com/fusion-jena/JenTab_solution_files) 
