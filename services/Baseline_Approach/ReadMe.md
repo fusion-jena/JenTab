@@ -91,10 +91,10 @@ This service provides an iteratrive lookup-based as a baseline approach. It solv
 * Baseline Approach depends on 4 services including data sources of the target knowledge graph.
 * see [\external_services](external_services) default configurations
  
-| KG                  | Service | Description                   | APIs | 
-|-----------------------|---------|----------------------------------------------------------------------------|----- |
-| Wikidata_Lookup_Service | (data source) proxy for the Wikidata lookup endpoint |   look_for, look_for_lst |
-| Wikidata_Endpoint_Service | (data source) proxy for the endpoint |   get_type_for, get_type_for_lst, get_subclasses_for, get_parents_for, get_connection_for_lst |
-| Generic_Lookup | proxy for our precomputed lookup. Our primary method solving typoes.    |  look_for, look_for_lst |
-| Autocorrect | In case of Generic_Lookup failure, this is our secondary and on demand service fixing typoes |get_type_for, get_type_for_lst, get_subclasses_for, get_parents_for |
+| Service | Description   | 
+|-----------------------|---------------------------------------------------------------------------- |
+| Wikidata_Lookup_Service | (data source) proxy for the Wikidata lookup endpoint |  
+| Wikidata_Endpoint_Service | (data source) proxy for the endpoint |  
+| Generic_Lookup | proxy for our precomputed lookup. Our primary method solving typoes.    |
+| Autocorrect | In case of Generic_Lookup failure, this is our secondary and on demand service fixing typoes |
 
