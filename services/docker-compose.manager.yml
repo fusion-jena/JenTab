@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+
+  manager:
+    build: ./Manager
+    #restart: always
+    networks:
+      tabmatching-manager-net:
+        aliases:
+         - manager.svc
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    volumes:
+      - ../assets/data/input:/code/assets
+      - ../assets/data/cache/Manager:/code/cache
+    ports:
+      - 5100:5100
+    environment:
+      - DOCKERIZED=True     # tell the container to be 
+      - SERVICE_WORKERS=5   # how many workers to process requests?
+      - USE_BASIC_AUTH=True # turn authentication on
+
+networks:
+  tabmatching-manager-net:
