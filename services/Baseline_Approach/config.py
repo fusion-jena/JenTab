@@ -67,9 +67,11 @@ TEST_FILE = 'YBK3P707'
 # Time in (mins) pipeline should take to finish one table, if exceeded, Timeout exception will be raised
 PIPELINE_SLA_SEC = 60 * 60  #10 mins
 
+# If the pipeline failed to solve a given table for the given SLA, 1 hour.
+# it will submit the intermediate and incomplete results to Manager
 ENABLE_PARTIAL_RES_SUBMISSION = True
 
 # This boolean decides which method is used to select CTA
 # --- True will activate LCS method
 # --- False will activate majority vote method
-LCS_SELECT_CTA = False
+LCS_SELECT_CTA = True
