@@ -10,7 +10,7 @@ Util Service tries to solve the problem of miss-spelled words. Runs at :5005
 **Parameters**
 * `text` ... string value.
 
-### `POST /correct_cell`
+### `POST /correct_cell_lst`
 **Parameters**
 * `texts` ... list of string values.
 
