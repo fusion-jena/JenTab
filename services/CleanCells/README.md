@@ -29,3 +29,11 @@
     * i.e., QUANTITY:
         * 1,025 m (3,363 ft) => 1025
     * Normalized values are easier to match with knowledge graph values.
+
+## Configuration
+
+| Name                  | Default | Description                                                                |
+|-----------------------|---------|----------------------------------------------------------------------------|
+| normalization | 'NFKC'       | fix text for you (ftfy) parameter. This covered a lot of helpful fixes at once, such as expanding ligatures and replacing “fullwidth” characters with their standard form. |
+
+* Consider change this NFKC to NFC in the [latest release](https://ftfy.readthedocs.io/en/latest/)

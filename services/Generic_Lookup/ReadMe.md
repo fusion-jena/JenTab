@@ -1,6 +1,7 @@
 # Generic Lookup Service
 
-Provides access to a prepopulated cache for label to candidate mappings.
+* Provides access to a prepopulated cache for label to candidate mappings.
+* Runs at: 5010
 
 ## Endpoints
 
@@ -28,4 +29,10 @@ Term(s) has to be provided form-encoded using the parameter `text`.
 ```
 
 ## Configuration
+| Name                  | Default | Description                                                                |
+|-----------------------|---------|----------------------------------------------------------------------------|
+| CACHE_PATH | under assets folder, check [config.py](/config.py)       | Defines where the precomupted database should be accessed "lookup.db3" |
 
+* More information about how the precomputed Generic_lookup database, please refer to our paper(s)
+* More information about `assets` structure, check [assets/README.md](https://github.com/fusion-jena/JenTab/tree/main/assets)
+* To download the lookup.db3, [check here](https://github.com/fusion-jena/JenTab_precomputed_lookup).
