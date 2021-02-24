@@ -203,27 +203,6 @@ services:
       - 5010:5010
     environment:
       - DOCKERIZED=True
-      
-  auditor:
-    build: ./Auditor
-    restart: always
-    volumes:
-      - ../assets/data/cache/Auditor:/code/cache
-    networks:
-      tabmatching-net:
-        aliases:
-          - auditor.svc
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "200k"
-        max-file: "10"
-    expose:
-      - 5011
-    ports:
-      - 5011:5011
-    environment:
-      - DOCKERIZED=True
     
   autocorrect:
     build: ./Autocorrect
