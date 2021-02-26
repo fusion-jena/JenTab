@@ -26,7 +26,7 @@ services:
     build: ./Baseline_Approach
     restart: always
     volumes:
-      - ../assets/data:/code/assets
+      - ../assets/Baseline_Approach:/code/assets
       - ../assets/data/cache/Baseline_Approach:/code/cache
     networks:
       tabmatching-net:
