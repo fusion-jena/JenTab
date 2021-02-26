@@ -7,9 +7,7 @@ import uuid
 run_mode = 1 if os.environ.get('DOCKERIZED', False) else 0
 
 # manager node address
-manager_url = 'http://10.138.225.141:5100' #meggy
-# manager_url = 'http://127.0.0.1:5100' #local
-# manager_url = 'http://ipc772.inf-bb.uni-jena.de/jentab/' #change password to fusion2020a?
+manager_url = 'http://127.0.0.1:5100' #local
 
 # identifier for this runner node
 client_id = get_ip() + ' - ' + str(uuid.uuid4())
@@ -34,8 +32,8 @@ BATCH_SIZE = 500
 
 # basic auth
 # needed to connect to the manager node
-USER_NAME = 'jentab'
-USER_PASSWORD = 'fusion2020'
+USER_NAME = 'YouManagerUsername'
+USER_PASSWORD = 'YouManagerPassword'
 
 # Handles partial results as errors
 RASIE_ERROR_FOR_INCOMPLETE_TABLES = True
