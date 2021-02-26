@@ -15,6 +15,8 @@ Here we describe the implemented services
 | Wikidata_Lookup_API | 5008 | Wikidata lookup, fuzzy search | Util | Wikidata_Lookup_API/5000 | |
 | Generic_Lookup | 5010 | Wikipedia_Lookup in the pre-computed lookup.db3 | Util | Generic_Lookup/5000 | |
 
+* All services handles server errors (500), return it to Manager. Manager is a centeral point of errors 
+
 ## Service Types
 
 
