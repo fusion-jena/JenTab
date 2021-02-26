@@ -20,7 +20,7 @@ The image above shows the distributed architecture of JenTab. Here you are a bri
     * Approach 
     * Manager 
 * **Clean Cells**: aims at cells cleaning in terms of, either generic fix (encoding issues and data clean up) or by more specific cleaning based on the column type.
-* T**ype Prediction**: Classifies the table column into one of 4 types, those with Wikidata equivalence (QUANTITY, STRING, DATE and OBJECT)
+* **Type Prediction**: Classifies the table column into one of 4 types, those with Wikidata equivalence (QUANTITY, STRING, DATE and OBJECT)
     * OBJECT is our most important type, we look for cells annotation mappings for this type.
 * **Lookup** & **Endpoint**: are proxies for the publicly available Wikidata lookup and endpoint. There, we perform our fuzzy search and SPARQL queries.
 * **Generic Strategy**: pre-computed service, our primary solution handling miss-spellings. 
@@ -29,9 +29,9 @@ The image above shows the distributed architecture of JenTab. Here you are a bri
 ## Quick Setup
 The fastest way to get JenTab up and running is via docker setup, with the following order.
 
-1. Manager  ```bash docker-compose -f docker-compose.manager.yml up ``` 
-2. Other services ```bash docker-compose -f docker-compose.yml up```
-3. Runner ```bash docker run Runner``` assuming the Runner image is already created
+1. Manager  ```docker-compose -f docker-compose.manager.yml up ``` 
+2. Other services ```docker-compose -f docker-compose.yml up```
+3. Runner ```docker run Runner``` assuming the ```Runner``` image is already created
 
 * Note1: for basic understanding of docker commands, please visit the official documentation of [docker](https://docs.docker.com/get-started/).
 * Note2: We also support native execution, but, in this case, you will setup each service on its own. So, we refer to:
