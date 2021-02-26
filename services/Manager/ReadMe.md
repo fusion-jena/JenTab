@@ -19,6 +19,20 @@ If you run under `Windows` and you faced some errors with `gunicorn`, alternativ
 waitress-serve --host 0.0.0.0 --port=5100 wsgi:app
 ```
 
+## Configuration
+
+[/config.py](/config.py) contains the following configurations:
+* `dataset`, which to load from which round.
+* `OUTPUT_ADD_PREFIX` should URLs include the URL prefix defined?
+* `URL_PREFIX ` , prefix of entity URLs; used to save some space when storing results in the DB
+* `paths`, where to save results, errors and analysis data.
+
+## Basic Authentication 
+* You should change these values of the basic authentication for the Manager node in [/config.py](/config.py)
+```bash
+USER_NAME = 'YourUsername'
+USER_PASSWORD = 'YourPassword'
+```
 ## Endpoints
 
 ### `POST /getWork`

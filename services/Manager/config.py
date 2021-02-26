@@ -47,8 +47,8 @@ util_log.info("Error path set to {}".format(ERROR_PATH))
 # basic auth
 # note this is only activated by setting the proper environment variable
 BASIC_AUTH_ENABLED = os.environ.get('USE_BASIC_AUTH', False)
-USER_NAME = 'jentab'
-USER_PASSWORD = 'fusion2020'
+USER_NAME = 'YourUsername'
+USER_PASSWORD = 'YourPassword'
 
 # enable analysis logging
 ENABLE_ANALYSIS = 'gt' == YEAR
