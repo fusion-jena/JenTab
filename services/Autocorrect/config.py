@@ -7,7 +7,7 @@ ENABLE_MODELBASED_CORRECTIONS = True and not os.environ.get('DISABLE_MODELBASED_
 ENABLE_WIKIPEDIA_CORRECTION = False
 
 # enable/disable off_the_shelf corrections
-ENABLE_OFF_THE_SHELF_CORRECTIONS = False
+ENABLE_OFF_THE_SHELF_CORRECTIONS = True
 
 # enable/disable Wikidata nearest label corrections
 ENABLE_WIKIDATA_BASED_CORRECTIONS = False
