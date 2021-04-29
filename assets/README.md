@@ -1,5 +1,10 @@
 # Assets
 
+* Assets folder holds your input data for rounds and any external static dependencies for the other services.
+* For the input configuration please refer to the [dataset](https://zenodo.org/record/4282879#.YIrI57UzZZg) provided by the challenge.
+* **Directory Structure** below explains the assets structure either the input files for each round or for the other services.
+* **Dependencies** lists the external dependencies to download. 
+
 ## Directory Structure
 	'''
 	+---Autocorrect
