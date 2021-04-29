@@ -1,5 +1,12 @@
 # Supported Primitive Types
 
+## Quick Setup
+
+* Linux: ```gunicorn --config ./gunicorn.py --preload wsgi:app```
+* Windows: 
+	* ```python -m spacy download en``` (once)
+	* ```python main.py```	
+
 This is a list of all supported primitive types by TypePrediction Service. We support 20 different types by using a combination between rule-based approach or regular expressions and [spaCy model](https://github.com/explosion/spaCy). A list of the supported named entities by spaCy is found [here](https://spacy.io/api/annotation#named-entities)
 
 ## OBJECT
