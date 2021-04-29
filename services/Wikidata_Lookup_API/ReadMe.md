@@ -2,6 +2,11 @@
 
 This service provides the proxy to Wikidata's search API.
 
+## Quick Setup 
+
+* ```hypercorn main:app -c python:asgi_config.py```
+
+
 ## Endpoints
 
 | Name            | Type | Data   (type)            | Description |

@@ -1,7 +1,10 @@
 # Generic Lookup Service
 
 * Provides access to a prepopulated cache for label to candidate mappings.
-* Runs at: 5010
+
+## Quick Setup 
+
+* ```hypercorn main:app -c python:asgi_config.py```
 
 ## Endpoints
 

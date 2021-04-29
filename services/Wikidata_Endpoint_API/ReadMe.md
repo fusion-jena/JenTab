@@ -2,6 +2,10 @@
 
 This service provides the proxy to Wikidata's SPARQL endpoint.
 
+## Quick Setup 
+
+* ```hypercorn main:app -c python:asgi_config.py```
+
 ## Endpoints
 
 | Name                                          | Type | Data   (type)                                  | Description |
