@@ -50,23 +50,24 @@ The fastest way to get JenTab up and running is via docker setup, with the follo
 * [Pre-computed databases for Generic Strategy](https://github.com/fusion-jena/JenTab_precomputed_lookup)
 
 ## Materials
+* Nora Abdelmageed, Sirko Schindler. **JenTab: A Toolkit for Semantic Table Annotations**. ([Accepted Paper](https://openreview.net/pdf?id=aZUGsoLdpa))
 * Nora Abdelmageed, Sirko Schindler. **JenTab: Matching Tabular Data to Knowledge Graphs**. ([paper](http://ceur-ws.org/Vol-2775/paper4.pdf))
 * [Ontology Matching workshop](http://om2020.ontologymatching.org/#prg) on 2 November 2020 ([video slides](https://drive.google.com/file/d/1LZzb4x2ay_Vys0qLP4t3rjiwgv368RJ5/view)) 
 
 ## Citation 
+`
+@article{abdelmageed2021jentab,
+  title={JenTab: A Toolkit for Semantic Table Annotations},
+  author={Abdelmageed, Nora and Schindler, Sirko},
+  booktitle={Knowledge Graph Construction (KGC) Workshop ESWC 2021, Accepted}
+  year={2021}
+}
+`
+
 `@inproceedings{abdelmageed2020jentab,
   title={Jentab: Matching tabular data to knowledge graphs},
   author={Abdelmageed, Nora and Schindler, Sirko},
   booktitle={The 19th International Semantic Web Conference (ISWC)},
-  year={2020}
-}
-`
-
-`
-@article{abdelmageed2020jentab,
-  title={JenTab: A Toolkit for Semantic Table Annotations},
-  author={Abdelmageed, Nora and Schindler, Sirko},
-  booktitle={ESWC 2021, Submitted}
   year={2020}
 }
 `
