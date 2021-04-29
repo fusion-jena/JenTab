@@ -26,6 +26,13 @@ The image above shows the distributed architecture of JenTab. Here you are a bri
 * **Generic Strategy**: pre-computed service, our primary solution handling miss-spellings. 
 * **Approach**: Encapsulates our pipeline in terms of several calls across the dependent services.  
 
+## Assets
+[assets](/assets) folder conatins all the required materials by services. For example:
+* The pre-trained word2vec model for AutoCorrect services.
+* How the data should be organized, in terms of tables and targets.
+* ... more details in the [ReadMe.md](/assets/README.md)
+* Make sure that you have structured the **assets** folder before the **Quick Setup**
+
 ## Quick Setup
 The fastest way to get JenTab up and running is via docker setup, with the following order.
 
@@ -38,11 +45,7 @@ The fastest way to get JenTab up and running is via docker setup, with the follo
     * each folder of each service under [services](/services).
     * [services.md](services/Services.md) summarizes the currently used services and their ports. 
 
-## Assets
-[assets](/assets) folder conatins all the required materials by services. For example:
-* The pre-trained word2vec model for AutoCorrect services.
-* How the data should be organized, in terms of tables and targets.
-* ... more details in the [ReadMe.md](/assets/README.md)
+
 	
 ## Results
 
