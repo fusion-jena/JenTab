@@ -31,7 +31,7 @@ The fastest way to get JenTab up and running is via docker setup, with the follo
 
 1. Manager  ```docker-compose -f docker-compose.manager.yml up ``` 
 2. Other services ```docker-compose -f docker-compose.yml up```
-3. Runner ```docker run Runner``` assuming the ```Runner``` image is already created
+3. Runner ```python run.py```. Make sure that you point to the correct directory using ```cd /Runner```
 
 * Note1: for basic understanding of docker commands, please visit the official documentation of [docker](https://docs.docker.com/get-started/).
 * Note2: We also support native execution, but, in this case, you will setup each service on its own. So, we refer to:
