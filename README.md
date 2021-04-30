@@ -31,19 +31,19 @@ The image above shows the distributed architecture of JenTab. Here you are a bri
 The first step of JenTab setup is to structure the [assets](/assets) folder. 
 For demonstration, here, we will setup the first round, 
 
-0. Input configuration (dataset)
+1. Input configuration (dataset)
     * [2020 Dataset per Round](https://zenodo.org/record/4282879#.YIrI57UzZZg)
     * Download tables and targets for Round 1
     * Your downloaded ```tables``` should go under
         * `/assets/data/input/2020/Round 1/`
     * Your downloaded ``CEA_Round1_Targets.csv``, `CTA_Round1_Targets.csv` and `CPA_Round1_Targets.csv` should go under
         * `/assets/data/input/2020/Round 1/targets/`
-* Pre-computed `Generic_Lookup` `db3` files
+2. Pre-computed `Generic_Lookup` `db3` files
     * [Generic_Lookup per Round](https://github.com/fusion-jena/JenTab_precomputed_lookup)
     * Download the `db3` file for `R1`
     * Your downloaded `lookup.db3` should go under
         * `/assets/cache/Generic_Lookup/`
-* `Baseline_Approach` requires the stopwords 
+3. `Baseline_Approach` requires the stopwords 
     * download [stopwords.txt](https://gist.github.com/sebleier/554280)
     * rename the downloaded file to `stopwords.txt`
     * locate it under:
@@ -75,8 +75,8 @@ For demonstration, here, we will setup the first round,
 
 After the assets are ready, the fastest way to get JenTab up and running is via docker setup, with the following order.
 
-0. ```cd /Services```
-1. Manager  
+1. ```cd /Services```
+2. Manager  
     * Change the default credentials in [services/Manager/config.py](/services/Manager/config.py) to yours
         * username: ```YourManagerUsername```
         * password: ```YourManagerPassword```
@@ -86,16 +86,14 @@ After the assets are ready, the fastest way to get JenTab up and running is via 
     * Use the following command to lanuch the Manager node 
         * ```docker-compose -f docker-compose.manager.yml up ```
     * Manager is suppose to run at [http://localhost:5100](http://localhost:5100)   
-2. All other services ```docker-compose -f docker-compose.yml up```
-3. Runner 
+3. All other services ```docker-compose -f docker-compose.yml up```
+4. Runner 
     * ```cd /Runner```
     * Change manager credentials in [services/Runner/config.py](/services/Runner/config.py) to your selected ones
     * Make sure that `manager_url = 'http://127.0.0.1:5100' #local` in the [services/Runner/config.py](/services/Runner/config.py)
     * Build an image for the Runner ```docker build runner .```
     * Run ```docker run --network="host" runner```    
-    
-    
-
+        
 * Note1: for basic understanding of docker commands, please visit the official documentation of [docker](https://docs.docker.com/get-started/).
 * Note2: We also support native execution, but, in this case, you will setup each service on its own. So, we refer to:
     * each folder of each service under [services](/services).
