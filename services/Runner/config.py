@@ -32,8 +32,8 @@ BATCH_SIZE = 500
 
 # basic auth
 # needed to connect to the manager node
-USER_NAME = 'YouManagerUsername'
-USER_PASSWORD = 'YouManagerPassword'
+USER_NAME = 'YourManagerUsername'
+USER_PASSWORD = 'YourManagerPassword'
 
 # Handles partial results as errors
 RASIE_ERROR_FOR_INCOMPLETE_TABLES = True
