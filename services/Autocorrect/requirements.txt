@@ -4,4 +4,4 @@ ftfy==5.7
 gensim==3.8.3
 gunicorn==20.0.4
 autocorrect==2.5.0
-edlib==1.3.8.post1
+edlib
