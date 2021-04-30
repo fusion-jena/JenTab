@@ -26,19 +26,75 @@ The image above shows the distributed architecture of JenTab. Here you are a bri
 * **Generic Strategy**: pre-computed service, our primary solution handling miss-spellings. 
 * **Approach**: Encapsulates our pipeline in terms of several calls across the dependent services.  
 
-## Assets
-[assets](/assets) folder conatins all the required materials by services. For example:
-* The pre-trained word2vec model for AutoCorrect services.
-* How the data should be organized, in terms of tables and targets.
-* ... more details in the [ReadMe.md](/assets/README.md)
-* Make sure that you have structured the **assets** folder before the **Quick Setup**
 
 ## Quick Setup
-The fastest way to get JenTab up and running is via docker setup, with the following order.
+The first step of JenTab setup is to structure the [assets](/assets) folder. 
+For demonstration, here, we will setup the first round, 
 
-1. Manager  ```docker-compose -f docker-compose.manager.yml up ``` 
-2. Other services ```docker-compose -f docker-compose.yml up```
-3. Runner ```python run.py```. Make sure that you point to the correct directory using ```cd /Runner```
+0. Input configuration (dataset)
+    * [2020 Dataset per Round](https://zenodo.org/record/4282879#.YIrI57UzZZg)
+    * Download tables and targets for Round 1
+    * Your downloaded ```tables``` should go under
+        * `/assets/data/input/2020/Round 1/`
+    * Your downloaded ``CEA_Round1_Targets.csv``, `CTA_Round1_Targets.csv` and `CPA_Round1_Targets.csv` should go under
+        * `/assets/data/input/2020/Round 1/targets/`
+* Pre-computed `Generic_Lookup` `db3` files
+    * [Generic_Lookup per Round](https://github.com/fusion-jena/JenTab_precomputed_lookup)
+    * Download the `db3` file for `R1`
+    * Your downloaded `lookup.db3` should go under
+        * `/assets/cache/Generic_Lookup/`
+* `Baseline_Approach` requires the stopwords 
+    * download [stopwords.txt](https://gist.github.com/sebleier/554280)
+    * rename the downloaded file to `stopwords.txt`
+    * locate it under:
+        * `/assets/Baseline_Approach/`
+* `assets` must have the following directory structure after the previous steps
+````      
++--assets
+\----data
+|   \----cache
+|   |   \----Generic_Lookup
+|   |           lookup.db3
+|   |           
+|   \----input
+|       \----2020
+|           +----Round 1
+|           |   +----tables
+|           |   \----targets
+|                       CEA_Round1_Targets.csv
+|                       CTA_Round1_Targets.csv
+|                       CPA_Round1_Targets.csv
+|
+\---Baseline_Approach
+|       stopwords.txt
+|       
+\---Wikidata_Endpoint
+        excluded_classes.csv
+        excluded_colheaders.csv
+````
+
+After the assets are ready, the fastest way to get JenTab up and running is via docker setup, with the following order.
+
+0. ```cd /Services```
+1. Manager  
+    * Change the default credentials in [services/Manager/config.py](/services/Manager/config.py) to yours
+        * username: ```YourManagerUsername```
+        * password: ```YourManagerPassword```
+    * Make sure that the dataset configuration in [services/Manager/config.py](/services/Manager/config.py) is set to:
+        * `ROUND = 1` 
+        * `YEAR = 2020`
+    * Use the following command to lanuch the Manager node 
+        * ```docker-compose -f docker-compose.manager.yml up ```
+    * Manager is suppose to run at [http://localhost:5100](http://localhost:5100)   
+2. All other services ```docker-compose -f docker-compose.yml up```
+3. Runner 
+    * ```cd /Runner```
+    * Change manager credentials in [services/Runner/config.py](/services/Runner/config.py) to your selected ones
+    * Make sure that `manager_url = 'http://127.0.0.1:5100' #local` in the [services/Runner/config.py](/services/Runner/config.py)
+    * Build an image for the Runner ```docker build runner .```
+    * Run ```docker run --network="host" runner```    
+    
+    
 
 * Note1: for basic understanding of docker commands, please visit the official documentation of [docker](https://docs.docker.com/get-started/).
 * Note2: We also support native execution, but, in this case, you will setup each service on its own. So, we refer to:

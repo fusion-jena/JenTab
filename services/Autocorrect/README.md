@@ -1,6 +1,6 @@
 # Autocorrect
  
-Util Service tries to solve the problem of miss-spelled words. Runs at :5005
+Util Service tries to solve the problem of miss-spelled words based on the enabled modes in the [/config.py](/config.py). Runs at :5005
 
 ## Endpoints
 
@@ -14,11 +14,13 @@ Util Service tries to solve the problem of miss-spelled words. Runs at :5005
 **Parameters**
 * `texts` ... list of string values.
 
-## How it works?
-* Based on the select configuration, set in the [config.py](/config.py), it will try to suggest the autocorrected word for a given string.
-* Supported configurations:
-    * ENABLE_MODELBASED_CORRECTIONS: tries to predict the autocorrected word based on 1-edit distance algorithm and Word2Vec model
-    * ENABLE_OFF_THE_SHELF_CORRECTIONS: outputs the corrected word by **autocorrect** python library
+## Configurations
+* ENABLE_MODELBASED_CORRECTIONS: (**recommended**) 
+    * tries to predict the autocorrected word based on 1-edit distance algorithm and Word2Vec model
+    * Download [GoogleNews-vectors-negative300.bin](https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz)
+    * Unzip
+    * Locate under: [/assets/autocorrect/GoogleNews-vectors-negative300.bin](/assets/autocorrect/GoogleNews-vectors-negative300.bin)
+* ENABLE_OFF_THE_SHELF_CORRECTIONS: (default) outputs the corrected word by **autocorrect** python library
 
 ## References 
 * [Word2Vec spell checker](https://www.kaggle.com/cpmpml/spell-checker-using-word2vec)
