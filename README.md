@@ -44,9 +44,9 @@ For demonstration, here, we will setup the first round,
     * Your downloaded `lookup.db3` should go under
         * `/assets/cache/Generic_Lookup/`
 3. `Baseline_Approach` requires the stopwords 
-    * download [stopwords.txt](https://gist.github.com/sebleier/554280)
-    * rename the downloaded file to `stopwords.txt`
-    * locate it under:
+    * Download [stopwords.txt](https://gist.github.com/sebleier/554280)
+    * Rename the downloaded file to `stopwords.txt`
+    * Your file should go under:
         * `/assets/Baseline_Approach/`
 * `assets` must have the following directory structure after the previous steps
 ````      
@@ -75,7 +75,7 @@ For demonstration, here, we will setup the first round,
 
 After the assets are ready, the fastest way to get JenTab up and running is via docker setup, with the following order.
 
-1. ```cd /Services```
+1. ```cd /services```
 2. Manager  
     * Change the default credentials in [services/Manager/config.py](/services/Manager/config.py) to yours
         * username: ```YourManagerUsername```
