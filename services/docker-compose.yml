@@ -223,7 +223,7 @@ services:
     ports: 
       - 5005:5005
     environment:
-      - DISABLE_MODELBASED_CORRECTIONS=False
+      - DISABLE_MODELBASED_CORRECTIONS=True
       - DOCKERIZED=True
 
 networks:
