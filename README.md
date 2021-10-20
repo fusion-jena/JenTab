@@ -1,6 +1,7 @@
 # JenTab [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5584721.svg)](https://doi.org/10.5281/zenodo.5584721)
 * Prvious Releases
-	* SemTab 2020 and Knowledge Graph Construction Workshop @ESWC 2021 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5584721.svg)](https://doi.org/10.5281/zenodo.5584721)
+	* SemTab 2020 and Knowledge Graph Construction Workshop @ESWC 2021 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4730314.svg)](https://doi.org/10.5281/zenodo.4730314)
+
 
 Matching Tabular Data to Knowledge Graphs
 
