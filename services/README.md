@@ -1,6 +1,6 @@
 # Services
  
-* If you plan to run each service separately, we recommend creating an [Anaconda](https://www.anaconda.com/products/individual) environment per service to manager its dependencies separately 
+* If you plan to run each service separately, we recommend creating an [Anaconda](https://www.anaconda.com/products/individual) environment or Virtual environments per service to manager its dependencies separately 
 * Here we describe the implemented services 
 
 ## Summary
