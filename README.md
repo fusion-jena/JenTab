@@ -19,12 +19,11 @@ The image above shows the distributed architecture of JenTab. Here you are a bri
     * pre-processing services (Clean Cells, Type Prediction )
     * Approach 
     * Manager 
-* **Clean Cells**: aims at cells cleaning in terms of, either generic fix (encoding issues and data clean up) or by more specific cleaning based on the column type.
-* **Type Prediction**: Classifies the table column into one of 4 types, those with Wikidata equivalence (QUANTITY, STRING, DATE and OBJECT)
-    * OBJECT is our most important type, we look for cells annotation mappings for this type.
-* **Lookup** & **Endpoint**: are proxies for the publicly available Wikidata lookup and endpoint. There, we perform our fuzzy search and SPARQL queries.
 * **Generic Strategy**: pre-computed service, our primary solution handling miss-spellings. 
-* **Approach**: Encapsulates our pipeline in terms of several calls across the dependent services.  
+* **Solver**: Encapsulates our pipeline in terms of several calls across the dependent services.  
+* **Wikidata_Proxy** encapsulates the lookup up and SPARQL query endpoint for DBpedia
+* **DBpedia_Proxy** encapsulates the lookup up and SPARQL query endpoint for Wikidata
+* **Caching Server** Centralized caching server 
 
 
 ## Quick Setup
@@ -112,6 +111,14 @@ After the assets are ready, the fastest way to get JenTab up and running is via 
 * [Ontology Matching workshop](http://om2020.ontologymatching.org/#prg) on 2 November 2020 ([video slides](https://drive.google.com/file/d/1LZzb4x2ay_Vys0qLP4t3rjiwgv368RJ5/view)) 
 
 ## Citation 
+`@inproceedings{abdelmageed_semtab2021,
+  title={{JenTab Meets SemTab 2021's New Challenges}},
+  author={Abdelmageed, Nora and Schindler, Sirko},
+  booktitle={The 20th International Semantic Web Conference (ISWC)},
+  year={2021}
+}
+`
+
 `
 @article{abdelmageed2021jentab,
   title={JenTab: A Toolkit for Semantic Table Annotations},
