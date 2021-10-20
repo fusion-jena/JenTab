@@ -5,4 +5,3 @@ humanfriendly==8.2
 idna==2.10
 requests==2.24.0
 requests-futures==1.0.0
-urllib3==1.25.9

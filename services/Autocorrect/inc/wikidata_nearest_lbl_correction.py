@@ -7,6 +7,7 @@ import numpy as np
 from ftfy import fix_text
 from config import ASSET_PATH
 
+
 def load_file(file_object, chunk_size=chunk_size, lazy=True):
     """
     Lazy function (generator) to read a file chunk  by chunk
@@ -50,7 +51,6 @@ def get_nearest_candidate(chunk, values):
 
     # list of labels
     labels = [l for l in chunk.split('\n')]  # filter on real strings only
-    print(len(labels))
 
     # init threads pool
     pool = multiprocessing.Pool(processes=cpus)
@@ -124,33 +124,33 @@ def get_candidates(vals):
 
 def test():
     # Court cases from table 3WJT10EJ.csv 2020 R2
-    vals = ['Spaziano . Florida', \
-            'Smith v/ Maryland', \
-            'SEC v. Texas Gulf Sumphur Co.', \
-            'Reieer v. Thompso', \
-            'Reed v. Pennsylvania Railroad Compan|', \
-            'Building Service Employees International Union Local 262 v/ Gazzam', \
-            'Ramspeck v. Federal Trial Exainers Conference', \
-            'Cowma Dairy Company v. United States', \
-            'Noswood v. Kirkpatrick', \
-            'Mongomery Building & Construction Trades Council v. Ledbetter Erection Company', \
-            'Southern Pacfic Company v. Gileo', \
-            'Colgate-Palmolive-Peft Company v. National Labor Relations Board', \
-            'Unitee States v. United States Smelting Refining', \
+    vals = ['Spaziano . Florida',
+            'Smith v/ Maryland',
+            'SEC v. Texas Gulf Sumphur Co.',
+            'Reieer v. Thompso',
+            'Reed v. Pennsylvania Railroad Compan|',
+            'Building Service Employees International Union Local 262 v/ Gazzam',
+            'Ramspeck v. Federal Trial Exainers Conference',
+            'Cowma Dairy Company v. United States',
+            'Noswood v. Kirkpatrick',
+            'Mongomery Building & Construction Trades Council v. Ledbetter Erection Company',
+            'Southern Pacfic Company v. Gileo',
+            'Colgate-Palmolive-Peft Company v. National Labor Relations Board',
+            'Unitee States v. United States Smelting Refining',
             'Poizzi v. Cowles Magazies']
-    expected = ['Spaziano v. Florida', \
-                'Smith v. Maryland', \
-                'SEC v. Texas Gulf Sulphur Co', \
-                'Reider v. Thompson ', \
-                'Reed v. Pennsylvania Railroad Company', \
-                'Building Service Employees International Union Local 262 v. Gazzam', \
-                'ramspeck v. federal trial examiners conference', \
-                'Bowman Dairy Company v. United States', \
-                'Norwood v. Kirkpatrick', \
-                'Montgomery Building & Construction Trades Council v. Ledbetter Erection Company', \
-                'Southern Pacific Company v. Gileo', \
-                'Colgate-Palmolive-Peet Company v. National Labor Relations Board', \
-                'United States v. United States Smelting Refining', \
+    expected = ['Spaziano v. Florida',
+                'Smith v. Maryland',
+                'SEC v. Texas Gulf Sulphur Co',
+                'Reider v. Thompson ',
+                'Reed v. Pennsylvania Railroad Company',
+                'Building Service Employees International Union Local 262 v. Gazzam',
+                'ramspeck v. federal trial examiners conference',
+                'Bowman Dairy Company v. United States',
+                'Norwood v. Kirkpatrick',
+                'Montgomery Building & Construction Trades Council v. Ledbetter Erection Company',
+                'Southern Pacific Company v. Gileo',
+                'Colgate-Palmolive-Peet Company v. National Labor Relations Board',
+                'United States v. United States Smelting Refining',
                 'Polizzi v. Cowles Magazines']
 
     util_log.start("test")
@@ -161,10 +161,8 @@ def test():
     cnt = 0
     for val, exp in zip(vals, expected):
         util_log.info("'{}' is corrected as --> '{}'".format(res[val], expected))
-        print(res[val])
         if res[val].lower() == exp.lower():  # normalize case insensitive
             cnt = cnt + 1
-    print((cnt / len(vals)) * 100)
     util_log.stop("test")
 
 

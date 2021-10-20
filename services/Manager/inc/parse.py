@@ -1,14 +1,20 @@
 import config
-import os
 import pandas as pd
 
 
-def parse(path):
-    """load a file and parse it with pandas"""
+def parse(path, hasHeaders=True):
+    """
+    load a file and parse it with pandas
+
+    @param    {String}  path        path to the file
+    @param    {Boolean} hasHeaders  is the first row a header row?
+    @returns  {dict}                parsed file content
+    """
 
     # get header row
-    with open(path, 'r', encoding='utf8') as file:
-        header = file.readline().strip().split(',')
+    if hasHeaders:
+        with open(path, 'r', encoding='utf8') as file:
+            header = file.readline().strip().split(',')
 
     # TODO: Check Table Orientation
     orientation = "Horizontal"
@@ -16,9 +22,17 @@ def parse(path):
     # get contents
     cols = []
     try:
-        df = pd.read_csv(path, names=header, keep_default_na=False)
+
+        if hasHeaders:
+            df = pd.read_csv(path, names=header, keep_default_na=False)
+        else:
+            df = pd.read_csv(path, header=None, keep_default_na=False)
+
         for col in df.columns:
             cols = cols + [df[col].to_list()]
+
+        header = [ [] for col in df.columns ]
+
     except Exception as e:
         print(e)
         # if pandas failed, we parse manually
@@ -67,3 +81,18 @@ def get_most_frequent(lst):
         if val == most_freq_val:
             res = res + [key]
     return res
+
+def weighted_sort(lst):
+    unique_elems = list(set(lst))
+    freq_dict = {}
+    for uelem in unique_elems:
+        freq_dict[uelem] = 0
+        for elem in lst:
+            if elem == uelem:
+                freq_dict[uelem] = freq_dict[uelem] + 1
+
+    sorted_dict = {}
+    for w in sorted(freq_dict, key=freq_dict.get, reverse=True):
+        sorted_dict[w] = freq_dict[w]
+
+    return sorted_dict

@@ -126,8 +126,13 @@ def addCTA(entries=[]):
 
 def addCEA(entries=[]):
     """add a number of CEA targets"""
-    query_unmapped = 'INSERT OR IGNORE INTO cea (table_id, row_id, col_id) VALUES (?,?,?)'
-    query_mapped = 'INSERT OR IGNORE INTO cea (table_id, row_id, col_id, mapped) VALUES (?,?,?,?)'
+    if config.OUTPUT_2019_FORMAT:
+        # 2019 format gives the col_id as a first value, we switch the inser into cea for this reason
+        query_unmapped = 'INSERT OR IGNORE INTO cea (table_id, col_id, row_id) VALUES (?,?,?)'
+        query_mapped = 'INSERT OR IGNORE INTO cea (table_id, col_id, row_id, mapped) VALUES (?,?,?,?)'
+    else:
+        query_unmapped = 'INSERT OR IGNORE INTO cea (table_id, row_id, col_id) VALUES (?,?,?)'
+        query_mapped = 'INSERT OR IGNORE INTO cea (table_id, row_id, col_id, mapped) VALUES (?,?,?,?)'
     with sqlite3.connect(DB_PATH) as conn:
         db = conn.cursor()
         if type(entries) is list:

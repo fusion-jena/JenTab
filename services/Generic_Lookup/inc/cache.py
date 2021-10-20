@@ -139,8 +139,6 @@ class Cache:
             if 'val' not in item:
                 raise Exception('Missing value in item')
             if any(k not in item['key'] for k in self._keys):
-                print(item)
-                print(self._keys)
                 raise Exception('Missing field in key')
 
         # store in db

@@ -7,7 +7,7 @@ ENABLE_MODELBASED_CORRECTIONS = True and not os.environ.get('DISABLE_MODELBASED_
 ENABLE_WIKIPEDIA_CORRECTION = False
 
 # enable/disable off_the_shelf corrections
-ENABLE_OFF_THE_SHELF_CORRECTIONS = True
+ENABLE_OFF_THE_SHELF_CORRECTIONS = False
 
 # enable/disable Wikidata nearest label corrections
 ENABLE_WIKIDATA_BASED_CORRECTIONS = False
@@ -38,6 +38,12 @@ import os
 # internal_storage_config
 CUR_PATH = os.path.dirname(os.path.abspath(__file__))
 if os.environ.get('DOCKERIZED', False):
+    CACHE_PATH = os.path.join(CUR_PATH, 'cache')
     ASSET_PATH = os.path.join(CUR_PATH, 'assets')
 else:
+    CACHE_PATH = os.path.abspath(os.path.join(CUR_PATH, '..', '..', 'assets', 'data', 'cache', 'Autocorrect'))
     ASSET_PATH = os.path.abspath(os.path.join(CUR_PATH, '..', '..', 'assets', 'Autocorrect'))
+
+# make sure all paths exist
+if not os.path.exists(CACHE_PATH):
+    os.makedirs(CACHE_PATH)

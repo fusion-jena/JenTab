@@ -1,7 +1,10 @@
 import re
 import config
 from utils.vec_manager import *
+import inc.cache
 
+# cache of results
+cache = inc.cache.Cache('terms', ['term'])
 
 class W2VCorrection():
     def __init__(self, model1):
@@ -26,7 +29,9 @@ class W2VCorrection():
                 lst = lst + [word]
             else:
                 lst = lst + [self.correction(word)]
-        return "{}".format(config.CLEAN_CELL_SEPARATOR).join(lst)
+        res = "{}".format(config.CLEAN_CELL_SEPARATOR).join(lst)
+        cache.set({'term': word}, [res])
+        return res
 
     # Methods related to correction probability
     def words(self, text):

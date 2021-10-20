@@ -1,9 +1,0 @@
-werkzeug==1.0.1
-waitress==1.4.4
-flask==1.1.2
-requests==2.23.0
-requests_futures==1.0.0
-stringdist==1.0.9
-pandas==1.0.3
-tabulate==0.8.7
-edlib

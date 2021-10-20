@@ -20,32 +20,45 @@ def run():
     db.addTables(tables)
     util_log.info('   ... done')
 
+    # identify target files
+    # target filenames are somewhat changing, so we just look for specific acronyms
+    targets = [f for f in os.listdir(config.TARGETS_PATH) if os.path.isfile(os.path.join(config.TARGETS_PATH, f)) and f.endswith('.csv')]
+    CEA_TARGET = [f for f in targets if 'CEA' in f]
+    CEA_TARGET = CEA_TARGET[0] if len(CEA_TARGET) > 0 else None
+    CTA_TARGET = [f for f in targets if 'CTA' in f]
+    CTA_TARGET = CTA_TARGET[0] if len(CTA_TARGET) > 0 else None
+    CPA_TARGET = [f for f in targets if 'CPA' in f]
+    CPA_TARGET = CPA_TARGET[0] if len(CPA_TARGET) > 0 else None
+
     # get a mapping from a table to its ID
     tableToId = db.getTableToId()
 
     # copy CTA targets to db
     util_log.info('Importing CTA')
-    path = os.path.join(config.TARGETS_PATH, "CTA_Round{0}_Targets.csv".format(config.ROUND))
-    if not os.path.exists(path):
-        path = os.path.join(config.TARGETS_PATH, "CTA_Round{0}_targets.csv".format(config.ROUND))
-    parseFile(tableToId, path, 'addCTA')
-    util_log.info('   ... done')
+    if CTA_TARGET:
+        path = os.path.join(config.TARGETS_PATH, CTA_TARGET)
+        parseFile(tableToId, path, 'addCTA')
+        util_log.info('   ... done')
+    else:
+        util_log.info('   ... skipped')
 
     # copy CEA targets to db
     util_log.info('Importing CEA')
-    path = os.path.join(config.TARGETS_PATH, "CEA_Round{0}_Targets.csv".format(config.ROUND))
-    if not os.path.exists(path):
-        path = os.path.join(config.TARGETS_PATH, "CEA_Round{0}_targets.csv".format(config.ROUND))
-    parseFile(tableToId, path, 'addCEA')
-    util_log.info('   ... done')
+    if CEA_TARGET:
+        path = os.path.join(config.TARGETS_PATH, CEA_TARGET)
+        parseFile(tableToId, path, 'addCEA')
+        util_log.info('   ... done')
+    else:
+        util_log.info('   ... skipped')
 
     # copy CPA targets to db
     util_log.info('Importing CPA')
-    path = os.path.join(config.TARGETS_PATH, "CPA_Round{0}_Targets.csv".format(config.ROUND))
-    if not os.path.exists(path):
-        path = os.path.join(config.TARGETS_PATH, "CPA_Round{0}_targets.csv".format(config.ROUND))
-    parseFile(tableToId, path, 'addCPA')
-    util_log.info('   ... done')
+    if CPA_TARGET:
+        path = os.path.join(config.TARGETS_PATH, CPA_TARGET)
+        parseFile(tableToId, path, 'addCPA')
+        util_log.info('   ... done')
+    else:
+        util_log.info('   ... skipped')
 
 
 def parseFile(tableToId, filePath, targetFkt):

@@ -8,6 +8,7 @@ run_mode = 1 if os.environ.get('DOCKERIZED', False) else 0
 
 # manager node address
 manager_url = 'http://127.0.0.1:5100' #local
+# manager_url = 'http://ppc206.mirz.uni-jena.de:5100/'
 
 # identifier for this runner node
 client_id = get_ip() + ' - ' + str(uuid.uuid4())
@@ -27,8 +28,8 @@ if not os.path.exists(CACHE_PATH):
     os.makedirs(CACHE_PATH)
 util_log.info("Cache path set to {}".format(CACHE_PATH))
 
-# If a column is too long, use this value to batch processing it. Used in prepareData
-BATCH_SIZE = 500
+# # If a column is too long, use this value to batch processing it. Used in prepareData
+# BATCH_SIZE = 500
 
 # basic auth
 # needed to connect to the manager node

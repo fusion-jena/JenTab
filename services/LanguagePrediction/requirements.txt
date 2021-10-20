@@ -1,4 +1,0 @@
-waitress==1.4.4
-flask==1.1.2
-fasttext==0.9.1
-gunicorn==20.0.4

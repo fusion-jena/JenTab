@@ -18,10 +18,8 @@ def run():
             GROUP BY method
             ORDER BY SUM(solved_cnt) DESC  
             """.format(task, step)
-            # print(query)
             items = audit.get(query, 'All')
             res.append({'task': task, 'step': step, 'methods': items})
-            # print(items)
     return {'res': res}
 
 

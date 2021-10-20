@@ -1,7 +1,0 @@
-https://github.com/facebook/duckling
-
-
-spaCy references:
-https://spacy.io/api/annotation#named-entities
-https://towardsdatascience.com/named-entity-recognition-with-nltk-and-spacy-8c4a7d88e7da
-https://www.dataquest.io/blog/tutorial-text-classification-in-python-using-spacy/

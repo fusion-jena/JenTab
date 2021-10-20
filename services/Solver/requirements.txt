@@ -1,0 +1,27 @@
+werkzeug==1.0.1
+waitress==1.4.4
+flask==1.1.2
+requests==2.23.0
+requests_futures==1.0.0
+stringdist==1.0.9
+pandas==1.0.3
+tabulate==0.8.7
+edlib
+
+
+# Requirements for preprocessing/type_prediction
+python-dateutil==2.8.1
+phonenumbers==8.12.1
+spacy==2.2.4
+datefinder==0.7.1
+date_detector==1.0.2
+#Run this manually if windows: python -m spacy download en
+
+
+# Requirements for preprocessing/clean_cells
+ftfy==5.7
+gensim==3.8.3
+gunicorn==20.0.4
+
+# Requirements for preprocessing/language_prediction
+fasttext==0.9.1

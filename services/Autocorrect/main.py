@@ -5,7 +5,7 @@ from werkzeug.exceptions import InternalServerError
 import traceback
 
 from utils.vec_manager import *
-from solver import get_corrected_lst, get_corrected
+from solver import get_corrected_lst, get_corrected, get_knowns_words
 
 from utils import util_log
 
@@ -24,6 +24,18 @@ def __load_model():
         print('Model loaded ... ')
 
 
+@app.route('/get_knowns', methods=['POST'])
+def get_knowns():
+    """Auto-correct a list of string values"""
+    global model
+
+    # List of strings
+    lst = request.json["values"]
+
+    knowns = get_knowns_words(lst, model)
+    return knowns
+
+
 @app.route('/correct_cell_lst', methods=['POST'])
 def correct_cell_lst():
     """Auto-correct a list of string values"""
@@ -34,6 +46,7 @@ def correct_cell_lst():
 
     corrected = get_corrected_lst(col_cells, model)
     return corrected
+
 
 @app.route('/correct_cell', methods=['POST'])
 def correct_cell():
@@ -46,12 +59,14 @@ def correct_cell():
     corrected = get_corrected(cell, model)
     return corrected
 
+
 @app.route('/test')
 def test():
     global model
-    lst = ["Rashmon", "Leo?n"]
-    return get_corrected_lst(lst, model)
-
+    # lst = ["Rashmon", "Leo?n", "Massachussetts"]
+    # return get_corrected_lst(lst, model)
+    lst = ['aspirine', 'Aspirin', 'aspin', 'asperin']
+    return get_knowns_words(lst, model)
 
 @app.errorhandler(InternalServerError)
 def handle_500(e):

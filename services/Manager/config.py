@@ -1,9 +1,14 @@
 import os
 import util_log
 
+# 1.1 represents Round 1 DBpedia; 1.2 = Round 1 Wikidata
+# 2.1 = Round 2 BioTables; 2.2 Round 2 HardTables (Both are Wikidata)
+# 3.1 = Round 3 BiodivTab (Wikidata);
+# 3.2.1 Round 3 GitTables DBpedia; 3.2.2 Round 3 GitTables Schema.org;
+# 3.3  Round 3 HardTables (Wikidata)
 # current dataset
-ROUND = 1
-YEAR = 2020
+ROUND = '3.2.1'
+YEAR = 2021
 
 # configure output format
 OUTPUT_ADD_PREFIX = False  # should URLs include the URL prefix defined?
