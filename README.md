@@ -2,7 +2,7 @@
 Matching Tabular Data to Knowledge Graphs
 
 * Target Knowledge Graph (KG) is **Wikidata**
-* Participant at [SemTab 2020: Semantic Web Challenge on Tabular Data to Knowledge Graph Matching](https://www.cs.ox.ac.uk/isg/challenges/sem-tab/2020/index.html)
+* Participant at [SemTab 2021: Semantic Web Challenge on Tabular Data to Knowledge Graph Matching](https://www.cs.ox.ac.uk/isg/challenges/sem-tab/2021/index.html)
 * Solves the Semantic Table Annotation (STA) tasks
     * Cell Entity Annotation (CEA)
     * Column Type Annotation (CTA)
