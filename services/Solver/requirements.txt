@@ -1,6 +1,6 @@
-werkzeug==1.0.1
+werkzeug==2.0
 waitress==1.4.4
-flask==1.1.2
+flask==2.1.0
 requests==2.23.0
 requests_futures==1.0.0
 stringdist==1.0.9

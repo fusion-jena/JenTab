@@ -10,8 +10,8 @@ MAX_TOKENS = 5  # Tokens inside cells to be checked individually
 
 DBPEDIA = 1
 WIKIDATA = 2
-TARGET_KG = DBPEDIA
-# TARGET_KG = WIKIDATA
+#TARGET_KG = DBPEDIA
+TARGET_KG = WIKIDATA
 
 Wikidata_Prefix = 'http://www.wikidata.org/entity/'  # Used to shorten the full mappingd URIs
 Wikidata_Prop_Prefix = 'http://www.wikidata.org/prop/direct/'
@@ -81,8 +81,11 @@ LCS_SELECT_CTA = True
 
 # Pipeline Mode
 # PIPELINE = 'pipeline_no_cpa' # used for BiodivTab
-PIPELINE = 'pipeline_full_small' #used for gittables
+PIPELINE = 'pipeline_header' # used for BiodivTab, process headers for CTA - No CPA included
+# PIPELINE = 'pipeline_full_small' #used for gittables
+# PIPELINE = 'pipeline_full' #used for gittables
 # PIPELINE = 'pipeline_conditional'
+
 
 # True will include all cell lookup strategies, Generic_Lookup otherwise.
 ALL_STRATEGIES = True
@@ -91,7 +94,8 @@ ALL_STRATEGIES = True
 ONE_CTA = True
 
 # Dataset for Biodiversity (BiodivTab) This enables further cleaning steps in the preprocess and biodiv_lookup strategy
-ENABLE_BIODIV_DICT = False
+ENABLE_BIODIV_DICT = True
 
 # Enables the generic_lookup strategy, all datasets use it except BiodivTab
-ENABLE_GENERIC_LOOKUP = True
+# Make sure you enable the correct folder of biodiv_WD or biodiv_DBP --> biodiv
+ENABLE_GENERIC_LOOKUP = False

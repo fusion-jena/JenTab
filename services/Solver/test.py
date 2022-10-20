@@ -8,9 +8,9 @@ import logging
 
 # current test file; needs to reside in /mock
 # may include a range like 'abcdef.0_500'
-# TEST_FILE = '097c576b688e46eca8583b1de1a84a59' # chemical elements table col id = 14 fe should be the iron
+TEST_FILE = '097c576b688e46eca8583b1de1a84a59' # chemical elements table col id = 14 fe should be the iron
 # TEST_FILE = '0bc67e05a4d14011a2cf3fca2f869495' #Unknown / Undetermined
-TEST_FILE = 'GitTables_1612'
+# TEST_FILE = 'GitTables_1612'
 # see log messages
 # utils.util_log.logger.setLevel(logging.INFO)
 

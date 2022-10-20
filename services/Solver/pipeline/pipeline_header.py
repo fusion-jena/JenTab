@@ -8,6 +8,7 @@ from .select_cea_stringSimilarity import select as select_cea_stringSimilarity
 from .select_cea_columnSimilarity import select as select_cea_columnSimilarity
 from .select_cta_LCS import select as select_cta_LCS
 from .select_cta_majority import select as select_cta_majority
+from .select_cta_by_header_value import select as select_cta_by_header_value
 from .select_cta_directParents import select as select_cta_directParents
 from .select_missingCea_by_cta import select as select_missingCea_by_cta
 
@@ -53,7 +54,7 @@ class Pipeline():
             res_IO.set_res(self.table_name, self.get_results())
 
             # intermediate: create cell pairs now that we have CEA candidates
-            self.pTable.initCellPairs()
+            # self.pTable.initCellPairs()
 
             # remove CEA candidates that are to string-distant from their cell values
             filter_distantCea(self.pTable)
@@ -83,7 +84,6 @@ class Pipeline():
                 select_cta_LCS(self.pTable, self.proxyService)
             else:
                 select_cta_majority(self.pTable, self.proxyService)
-            # select_cpa_majority(self.pTable)
 
             # final checkpoints
             self.pTable.checkPoint.addCheckPoint('final_cand', self.pTable, cea=True, cta=True, cpa=True)
@@ -118,6 +118,9 @@ class Pipeline():
             self.pTable.checkPoint.checkpointSelected('select_cta_directParents', self.pTable, cta=True)
             res_IO.set_res(self.table_name, self.get_results())
 
+            # override the CTA by the header entity
+            select_cta_by_header_value(self.pTable)
+
             # return pTable object
             return self.pTable
 
@@ -141,12 +144,6 @@ class Pipeline():
                     'row_id': cell['row_id'],
                     'mapped': cell['cand'][0]['uri']
                 })
-            elif ('sel_cand' not in cell) or cell['sel_cand'] is None:
-                result.append({
-                    'col_id': cell['col_id'],
-                    'row_id': cell['row_id'],
-                    'mapped': 'NIL'
-                })
         return result
 
     def get_CTA(self):
@@ -156,11 +153,6 @@ class Pipeline():
                 result.append({
                     'col_id': col['col_id'],
                     'mapped': col['sel_cand']['uri']
-                })
-            elif ('sel_cand' not in col) or col['sel_cand'] is None:
-                result.append({
-                    'col_id': col['col_id'],
-                    'mapped': 'NIL'
                 })
         return result
 
