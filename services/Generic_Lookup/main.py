@@ -9,11 +9,15 @@ if sys.stderr.encoding != 'UTF-8':
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
 from quart import Quart, request
-from inc.lookup import lookup, lookup_single
+from inc.lookup import lookup, lookup_single, lookup_exact_lst
 import traceback
 
 app = Quart(__name__)
 
+@app.route('/look_for_exact_lst', methods=['POST', 'GET'])
+async def look_for_exact_lst():
+    queries = (await request.json)["needles"]
+    return await lookup_exact_lst(queries)
 
 @app.route('/look_for_lst', methods=['POST', 'GET'])
 async def look_for_lst():
