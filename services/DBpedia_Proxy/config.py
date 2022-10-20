@@ -57,7 +57,7 @@ if os.environ.get('DOCKERIZED', False):
     CACHE_PATH = os.path.join(CUR_PATH, 'cache')
     ASSET_PATH = os.path.join(CUR_PATH, 'assets')
 else:
-    CACHE_PATH = os.path.abspath(os.path.join(CUR_PATH, '..', '..', 'assets', 'data', 'cache', 'DBpedia_Proxy'))
+    CACHE_PATH = os.path.abspath(os.path.join(CUR_PATH, '..', '..', 'assets', 'inc/data', 'cache', 'DBpedia_Proxy'))
     ASSET_PATH = os.path.abspath(os.path.join(CUR_PATH, '..', '..', 'assets', 'DBpedia_Proxy'))
 
 # make sure all paths exist

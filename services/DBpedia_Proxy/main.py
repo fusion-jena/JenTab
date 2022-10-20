@@ -1,3 +1,5 @@
+import os.path
+
 from quart import Quart, request
 import traceback
 import inc.api
@@ -7,7 +9,10 @@ import inc.api_redirects
 import inc.disambiguation
 from inc.lookup import lookup, lookup_single
 from inc.spotlight_lookup import spotlight_lookup
+from inc.lazy_loading import get_all_taxons, get_all_chemicals, get_all_years
+from inc.api_sameAs import get_sameAs_for_lst
 
+import pandas as pd
 import util_log
 
 util_log.init("dbpedia_proxy.log")
@@ -38,13 +43,45 @@ async def routeTest():
     #                                                                     'http://dbpedia.org/resource/Rahman_(actor)'], 'en')
     #
     res["get_ancestors_for_lst"] = await inc.api_types.get_ancestors_for_lst(['http://dbpedia.org/resource/Rashomon',
-                                                     'http://dbpedia.org/ontology/Magazine'])
+                                                                              'http://dbpedia.org/ontology/Magazine'])
 
     res["get_hierarchy_for_lst"] = await inc.api_types.get_hierarchy_for_lst(['http://dbpedia.org/ontology/Song',
-                                                     'http://dbpedia.org/ontology/Magazine'])
+                                                                              'http://dbpedia.org/ontology/Magazine'])
     return res
 
+
 # ~~~~~~~~~~~~~~~~~~~~ Lookup ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@app.route('/build_taxons')
+async def build_taxons():
+    return await get_all_taxons()
+
+
+@app.route('/build_chemicals')
+async def build_chemicals():
+    return await get_all_chemicals()
+
+
+@app.route('/build_years')
+async def build_years():
+    return await get_all_years()
+
+
+@app.route('/convert_to_dbpedia_resources')
+async def convert_to_dbpedia_resources(CTA=True, filename="header_2hops_cta.csv"):
+    if CTA:
+        df = pd.read_csv(os.path.join(os.path.realpath('.'), 'inc', 'data', filename), names=['file', 'col_id', 'wd'])
+    else:
+        df = pd.read_csv(os.path.join(os.path.realpath('.'), 'inc', 'data', filename), names=['file', 'col_id', 'row_id', 'wd'])
+    wd = ['http://www.wikidata.org/entity/'+wdi for wdi in df['wd'].to_list()]
+    res = await get_sameAs_for_lst(wd)
+
+    dbp_wd = [res[wdi][0]['map'] if res[wdi] and len(res[wdi]) >=1  else 'NIL' for wdi in wd ]
+    df['wd'] = pd.Series(dbp_wd)
+    df.to_csv(os.path.join(os.path.realpath('.'), 'inc', 'data', 'dbp_'+filename), index=None, header=None)
+
+    print(res)
+    return res
 
 @app.route('/spotlightTest')
 def spotlightTest():
@@ -63,6 +100,7 @@ async def look_for_lst():
 async def look_for():
     term = (await request.json)["text"]
     return await lookup_single(term)
+
 
 # ~~~~~~~~~~~~~~~~~~~~ Endpoint ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
