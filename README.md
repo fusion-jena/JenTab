@@ -1,7 +1,11 @@
-# JenTab
+# JenTab [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5584721.svg)](https://doi.org/10.5281/zenodo.5584721)
+* Prvious Releases
+	* SemTab 2020 and Knowledge Graph Construction Workshop @ESWC 2021 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4730314.svg)](https://doi.org/10.5281/zenodo.4730314)
+
+
 Matching Tabular Data to Knowledge Graphs
 
-* Target Knowledge Graph (KG) is **Wikidata**
+* Target Knowledge Graphs (KGs) are **Wikidata** & **DBpedia**
 * Participant at [SemTab 2021: Semantic Web Challenge on Tabular Data to Knowledge Graph Matching](https://www.cs.ox.ac.uk/isg/challenges/sem-tab/2021/index.html)
 * Solves the Semantic Table Annotation (STA) tasks
     * Cell Entity Annotation (CEA)
@@ -19,7 +23,7 @@ The image above shows the distributed architecture of JenTab. Here you are a bri
     * pre-processing services (Clean Cells, Type Prediction )
     * Approach 
     * Manager 
-* **Generic Strategy**: pre-computed service, our primary solution handling miss-spellings. 
+* **Generic Lookup**: pre-computed service, our primary solution handling miss-spellings. 
 * **Solver**: Encapsulates our pipeline in terms of several calls across the dependent services.  
 * **Wikidata_Proxy** encapsulates the lookup up and SPARQL query endpoint for DBpedia
 * **DBpedia_Proxy** encapsulates the lookup up and SPARQL query endpoint for Wikidata
