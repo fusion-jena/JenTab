@@ -17,7 +17,7 @@ wikidata_SPARQL_ENDPOINT = 'https://query.wikidata.org/sparql'
 
 # endpoint for cache server
 # None for local, SQlite-based cache
-CACHE_ENDPOINT = 'https://jentab-01.fmi.uni-jena.de/cache'
+CACHE_ENDPOINT = None #'https://jentab-01.fmi.uni-jena.de/cache'
 # credentials
 CACHE_USERNAME = 'YourCacheUserName'
 CACHE_PASSWORD = 'YourCachePassword'

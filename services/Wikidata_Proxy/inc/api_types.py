@@ -47,13 +47,14 @@ async def get_ancestors_for_lst(entities):
     aka simulate a reasoner and get all classes of the given entities
     """
     # P31
-    # res = await runQuerySingleKey(cacheAncestors, entities, """
-    #      SELECT ?base ?type
-    #      WHERE {
-    #        VALUES ?base { %s } .
-    #        ?base wdt:P31 ?type .
-    #      }
-    #     """)
+    res = await runQuerySingleKey(cacheAncestors, entities, """
+         SELECT ?base ?type
+         WHERE {
+           VALUES ?base { %s } .
+           ?base wdt:P31 ?type .
+         }
+        """)
+
     # multiple hops
     # res = await runQuerySingleKey(cacheAncestors, entities, """
     #  SELECT ?base ?type
@@ -65,23 +66,23 @@ async def get_ancestors_for_lst(entities):
     # disabled for now: ?base (wdt:P31/wdt:P279*)|wdt:P279+ ?type .
 
     # 2 hops including if entity == class
-    res = await runQuerySingleKey(cacheAncestors, entities, """
-      SELECT DISTINCT ?base ?type
-      WHERE
-      {
-        {
-          VALUES ?base { %s } .
-          { ?base wdt:P31 ?type. } #  direct instanceOf P31 (most fine-grained type)
-          UNION
-          {
-            ?base wdt:P31 ?t.
-            ?t wdt:P279 ?type .  # parent of the instanceOf P279 (next fine-grained type)
-          }
-          UNION
-          { ?base wdt:P279 ?type .} # if base is a class then retrieves its parent directly P279
-        }
-      }
-    """,printIt=False)
+    # res = await runQuerySingleKey(cacheAncestors, entities, """
+    #   SELECT DISTINCT ?base ?type
+    #   WHERE
+    #   {
+    #     {
+    #       VALUES ?base { %s } .
+    #       { ?base wdt:P31 ?type. } #  direct instanceOf P31 (most fine-grained type)
+    #       UNION
+    #       {
+    #         ?base wdt:P31 ?t.
+    #         ?t wdt:P279 ?type .  # parent of the instanceOf P279 (next fine-grained type)
+    #       }
+    #       UNION
+    #       { ?base wdt:P279 ?type .} # if base is a class then retrieves its parent directly P279
+    #     }
+    #   }
+    # """,printIt=False)
     # filtered result placeholder
     f_res = {}
     # get rid of excludedClasses
