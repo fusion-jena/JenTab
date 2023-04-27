@@ -49,7 +49,8 @@ For demonstration, here, we will setup the first round,
 3. `Baseline_Approach` requires the stopwords 
     * Download [stopwords.txt](https://gist.github.com/sebleier/554280)
     * Rename the downloaded file to `stopwords.txt`
-    * Your file should go under:
+    * Download [lid.176.ftz](https://fasttext.cc/docs/en/language-identification.html) for fastText model
+    * Your files should go under:
         * `/assets/Baseline_Approach/`
 * `assets` must have the following directory structure after the previous steps
 ````      
@@ -70,6 +71,7 @@ For demonstration, here, we will setup the first round,
 |
 \---Baseline_Approach
 |       stopwords.txt
+|       lid.176.ftz
 |       
 \---Wikidata_Endpoint
         excluded_classes.csv
