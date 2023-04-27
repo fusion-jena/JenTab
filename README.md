@@ -94,7 +94,7 @@ After the assets are ready, the fastest way to get JenTab up and running is via 
     * ```cd /Runner```
     * Change manager credentials in [services/Runner/config.py](/services/Runner/config.py) to your selected ones
     * Make sure that `manager_url = 'http://127.0.0.1:5100' #local` in the [services/Runner/config.py](/services/Runner/config.py)
-    * Build an image for the Runner ```docker build runner .```
+    * Build an image for the Runner ```docker build -t runner .```
     * Run ```docker run --network="host" runner```    
         
 * Note1: for basic understanding of docker commands, please visit the official documentation of [docker](https://docs.docker.com/get-started/).
